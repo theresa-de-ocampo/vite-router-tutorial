@@ -11,7 +11,18 @@ import Error from "./pages/Error";
 import Contact from "./pages/Contact";
 
 // * APIs
-import { getContacts } from "./api";
+import { getContacts, createContact } from "./api";
+
+/**
+ * <Form> prevents the browser from sending the request to the server, and sends it to your route
+ * `action` instead.
+ *
+ * In Web semantics, a POST usually means some data is changing. By convention, React Router uses
+ * this as a hint to automatically revalidate the data on the page after the `action` finishes.
+ *
+ * That means alls of your `useLoderData` hooks update, and the UI stays in sync with your data
+ * automatically.
+ */
 
 const router = createBrowserRouter([
   {
@@ -19,6 +30,7 @@ const router = createBrowserRouter([
     element: <Root />,
     errorElement: <Error />,
     loader: getContacts,
+    action: createContact,
     children: [
       {
         path: "contacts/:contactId",

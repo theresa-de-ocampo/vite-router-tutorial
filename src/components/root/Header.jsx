@@ -1,3 +1,5 @@
+import { Form } from "react-router-dom";
+
 export default function Header() {
   return (
     <header>
@@ -12,9 +14,9 @@ export default function Header() {
         <div id="search-spinner" aria-hidden hidden={true} />
         <div className="sr-only" aria-live="polite"></div>
       </form>
-      <form method="post">
+      <Form method="post">
         <button type="submit">New</button>
-      </form>
+      </Form>
     </header>
   );
 }
