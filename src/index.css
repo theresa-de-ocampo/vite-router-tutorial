@@ -201,6 +201,7 @@ aside nav a.active span {
 i {
   color: #818181;
 }
+
 aside nav .active i {
   color: inherit;
 }
@@ -299,7 +300,8 @@ aside nav a.pending {
   object-fit: cover;
 }
 
-#contact h1 ~ div {
+#contact h1 ~ div,
+#contact h1 ~ footer {
   display: flex;
   gap: 0.5rem;
   margin: 1rem 0;
@@ -329,6 +331,7 @@ aside nav a.pending {
 #contact-form label span {
   width: 8rem;
 }
+
 #contact-form p:first-child input,
 #contact-form label input,
 #contact-form label textarea {

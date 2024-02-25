@@ -10,15 +10,21 @@ import Root from "./pages/Root";
 import Error from "./pages/Error";
 import Contact from "./pages/Contact";
 
+// * APIs
+import { getContacts } from "./api";
+
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Root />,
-    errorElement: <Error />
-  },
-  {
-    path: "contacts/:contactId",
-    element: <Contact />
+    errorElement: <Error />,
+    loader: getContacts,
+    children: [
+      {
+        path: "contacts/:contactId",
+        element: <Contact />
+      }
+    ]
   }
 ]);
 
