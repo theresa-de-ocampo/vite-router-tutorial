@@ -7,7 +7,6 @@ export default function Root() {
   return (
     <>
       <aside>
-        <h1>React Router Contacts</h1>
         <Header />
         <nav>
           {contacts.length ? (
@@ -27,6 +26,9 @@ export default function Root() {
             </p>
           )}
         </nav>
+        <Link to="/">
+          <h1>React Router Contacts</h1>
+        </Link>
       </aside>
       <main id="detail">
         <Outlet />

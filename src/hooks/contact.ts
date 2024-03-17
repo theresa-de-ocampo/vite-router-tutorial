@@ -14,7 +14,7 @@ export default function useContact() {
 
   async function createContact() {
     const contact = await postContact();
-    return { contact };
+    return redirect(`/contacts/${contact.id}`);
   }
 
   async function updateContact({ request, params }) {

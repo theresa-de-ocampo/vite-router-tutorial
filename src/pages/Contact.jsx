@@ -13,10 +13,10 @@ export default function Contact() {
       </div>
 
       <div>
-        <h1>
+        <h2>
           {`${contactInfo.firstName} ${contactInfo.lastName}`}{" "}
           <Favorite contactInfo={contactInfo} />
-        </h1>
+        </h2>
 
         {contactInfo.email && (
           <p className="email">
