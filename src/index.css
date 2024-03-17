@@ -358,7 +358,7 @@ aside nav a.pending {
 #contact-form footer {
   margin-left: 8rem;
   display: flex;
-  gap: 10px;
+  gap: 8px;
 }
 
 #contact-form footer:last-child button[type="button"] {

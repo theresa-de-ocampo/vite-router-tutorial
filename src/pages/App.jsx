@@ -14,7 +14,8 @@ import EditContact from "./EditContact";
 import useContact from "../hooks/contact";
 
 export default function App() {
-  const { getContact, listContacts, createContact } = useContact();
+  const { getContact, listContacts, createContact, updateContact } =
+    useContact();
 
   /**
    * <Form> prevents the browser from sending the request to the server, and sends it to your route
@@ -43,7 +44,8 @@ export default function App() {
         {
           path: "contacts/:contactId/edit",
           element: <EditContact />,
-          loader: getContact
+          loader: getContact,
+          action: updateContact
         }
       ]
     }
