@@ -313,26 +313,21 @@ aside nav a.pending {
   flex-direction: column;
   gap: 1rem;
 }
-#contact-form > p:first-child {
+#contact-form > label:first-child {
   margin: 0;
   padding: 0;
 }
 
-#contact-form > p:first-child > :nth-child(2) {
-  margin-right: 1rem;
-}
-
-#contact-form > p:first-child,
+#contact-form > label:first-child,
 #contact-form label {
   display: flex;
+  align-items: center;
 }
 
-#contact-form p:first-child span,
 #contact-form label span {
   width: 8rem;
 }
 
-#contact-form p:first-child input,
 #contact-form label input,
 #contact-form label textarea {
   flex-grow: 2;
@@ -360,7 +355,13 @@ aside nav a.pending {
   margin: 0 0 0 8rem;
 }
 
-#contact-form p:last-child button[type="button"] {
+#contact-form footer {
+  margin-left: 8rem;
+  display: flex;
+  gap: 10px;
+}
+
+#contact-form footer:last-child button[type="button"] {
   color: inherit;
 }
 

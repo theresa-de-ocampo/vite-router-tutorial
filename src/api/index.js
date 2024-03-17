@@ -27,9 +27,9 @@ export async function postContact() {
     id,
     firstName,
     lastName,
-    avatar: faker.image.avatar(),
-    company: faker.company.name(),
     email: faker.internet.email({ firstName, lastName }),
+    company: faker.company.name(),
+    avatar: faker.image.avatar(),
     favorite: false,
     createdAt: Date.now()
   };

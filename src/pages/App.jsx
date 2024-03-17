@@ -8,6 +8,7 @@ import "../index.css";
 import Root from "./Root";
 import Error from "./Error";
 import Contact from "./Contact";
+import EditContact from "./EditContact";
 
 // * Hooks
 import useContact from "../hooks/contact";
@@ -37,6 +38,11 @@ export default function App() {
         {
           path: "contacts/:contactId",
           element: <Contact />,
+          loader: getContact
+        },
+        {
+          path: "contacts/:contactId/edit",
+          element: <EditContact />,
           loader: getContact
         }
       ]

@@ -1,12 +1,10 @@
-import { useLoaderData } from "react-router-dom";
+import { Form, useLoaderData } from "react-router-dom";
 
 // * Components
 import Favorite from "../components/contact/Favorite";
-import { Form } from "react-router-dom";
 
 export default function Contact() {
   const { contact: contactInfo } = useLoaderData();
-  console.log(contactInfo);
 
   return (
     <section id="contact">
