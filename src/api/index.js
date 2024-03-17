@@ -1,5 +1,5 @@
 import localforage from "localforage";
-// import { matchSorter } from "match-sorter";
+import { matchSorter } from "match-sorter";
 import sortBy from "sort-by";
 import { faker } from "@faker-js/faker";
 
@@ -8,13 +8,13 @@ export async function fetchContacts(query) {
 
   let contacts = await localforage.getItem("contacts");
   if (!contacts) contacts = [];
-  // if (query) {
-  //   contacts = matchSorter(contacts, query, {
-  //     keys: ["firstName", "lastName"]
-  //   });
-  // }
+  if (query) {
+    contacts = matchSorter(contacts, query, {
+      keys: ["firstName", "lastName"]
+    });
+  }
 
-  return contacts.sort(sortBy("lastName", "createdAt"));
+  return contacts.sort(sortBy("firstName", "createdAt"));
 }
 
 export async function postContact() {

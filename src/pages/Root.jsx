@@ -1,4 +1,4 @@
-import { Outlet, Link, useLoaderData } from "react-router-dom";
+import { Outlet, Link, useLoaderData, NavLink } from "react-router-dom";
 import Header from "../components/root/Header";
 
 export default function Root() {
@@ -13,10 +13,15 @@ export default function Root() {
             <ul>
               {contacts.map((contact) => (
                 <li key={contact.id}>
-                  <Link to={`/contacts/${contact.id}`}>
+                  <NavLink
+                    to={`/contacts/${contact.id}`}
+                    className={({ isActive, isPending }) =>
+                      isActive ? "active" : isPending ? "pending" : ""
+                    }
+                  >
                     {contact.firstName} {contact.lastName}
                     {contact.favorite && <span>★</span>}
-                  </Link>
+                  </NavLink>
                 </li>
               ))}
             </ul>
