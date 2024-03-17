@@ -9,14 +9,11 @@ import Root from "./Root";
 import Error from "./Error";
 import Contact from "./Contact";
 
-// * APIs
-import { fetchContacts, postContact } from "../api";
-
 // * Hooks
 import useContact from "../hooks/contact";
 
 export default function App() {
-  const { getContact } = useContact();
+  const { getContact, listContacts, createContact } = useContact();
 
   /**
    * <Form> prevents the browser from sending the request to the server, and sends it to your route
@@ -34,8 +31,8 @@ export default function App() {
       path: "/",
       element: <Root />,
       errorElement: <Error />,
-      loader: fetchContacts,
-      action: postContact,
+      loader: listContacts,
+      action: createContact,
       children: [
         {
           path: "contacts/:contactId",

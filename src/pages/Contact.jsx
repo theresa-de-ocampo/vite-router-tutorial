@@ -1,15 +1,12 @@
-import { Form } from "react-router-dom";
+import { useLoaderData } from "react-router-dom";
+
+// * Components
 import Favorite from "../components/contact/Favorite";
+import { Form } from "react-router-dom";
 
 export default function Contact() {
-  const contactInfo = {
-    firstName: "Teriz",
-    lastName: "De Ocampo",
-    avatar: "http://tinyurl.com/4ay3f7ka",
-    company: "Quasset", // twitter
-    email: "theresa@gmail.com", // notes
-    favorite: false
-  };
+  const { contact: contactInfo } = useLoaderData();
+  console.log(contactInfo);
 
   return (
     <section id="contact">

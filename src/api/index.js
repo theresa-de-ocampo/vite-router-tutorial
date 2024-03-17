@@ -1,5 +1,5 @@
 import localforage from "localforage";
-import { matchSorter } from "match-sorter";
+// import { matchSorter } from "match-sorter";
 import sortBy from "sort-by";
 import { faker } from "@faker-js/faker";
 
@@ -14,9 +14,7 @@ export async function fetchContacts(query) {
   //   });
   // }
 
-  return { contacts: contacts.sort(sortBy("lastName", "createdAt")) };
-
-  // return { contacts };
+  return contacts.sort(sortBy("lastName", "createdAt"));
 }
 
 export async function postContact() {
@@ -35,12 +33,12 @@ export async function postContact() {
     favorite: false,
     createdAt: Date.now()
   };
-  let { contacts } = await fetchContacts();
-  contacts.unshift(contact);
 
+  let contacts = await fetchContacts();
+  contacts.unshift(contact);
   await set(contacts);
 
-  return { contact };
+  return contact;
 }
 
 export async function fetchContact(id) {

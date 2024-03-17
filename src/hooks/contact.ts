@@ -1,4 +1,4 @@
-import { fetchContact } from "../api";
+import { fetchContact, fetchContacts, postContact } from "../api";
 
 export default function useContact() {
   async function getContact({ params }) {
@@ -6,5 +6,15 @@ export default function useContact() {
     return { contact };
   }
 
-  return { getContact };
+  async function listContacts() {
+    const contacts = await fetchContacts();
+    return { contacts };
+  }
+
+  async function createContact() {
+    const contact = await postContact();
+    return { contact };
+  }
+
+  return { getContact, listContacts, createContact };
 }
