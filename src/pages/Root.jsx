@@ -13,8 +13,8 @@ export default function Root() {
           {contacts.length ? (
             <ul>
               {contacts.map((contact) => (
-                <li key={contacts.id}>
-                  <Link to={`/contacts/${contacts.id}`}>
+                <li key={contact.id}>
+                  <Link to={`/contacts/${contact.id}`}>
                     {contact.firstName} {contact.lastName}
                     {contact.favorite && <span>★</span>}
                   </Link>

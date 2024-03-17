@@ -1,27 +1,41 @@
 import localforage from "localforage";
 import { matchSorter } from "match-sorter";
 import sortBy from "sort-by";
+import { faker } from "@faker-js/faker";
 
-export async function getContacts(query) {
-  await fakeNetwork(`getContacts:${query}`);
+export async function fetchContacts(query) {
+  await fakeNetwork(`fetchContacts:${query}`);
 
   let contacts = await localforage.getItem("contacts");
   if (!contacts) contacts = [];
-  if (query) {
-    contacts = matchSorter(contacts, query, {
-      keys: ["firstName", "lastName"]
-    });
-  }
+  // if (query) {
+  //   contacts = matchSorter(contacts, query, {
+  //     keys: ["firstName", "lastName"]
+  //   });
+  // }
 
   return { contacts: contacts.sort(sortBy("lastName", "createdAt")) };
+
+  // return { contacts };
 }
 
-export async function createContact() {
+export async function postContact() {
   await fakeNetwork();
 
   let id = Math.random().toString(36).substring(2, 9);
-  let contact = { id, createdAt: Date.now() };
-  let { contacts } = await getContacts();
+  const firstName = faker.person.firstName();
+  const lastName = faker.person.lastName();
+  let contact = {
+    id,
+    firstName,
+    lastName,
+    avatar: faker.image.avatar(),
+    company: faker.company.name(),
+    email: faker.internet.email({ firstName, lastName }),
+    favorite: false,
+    createdAt: Date.now()
+  };
+  let { contacts } = await fetchContacts();
   contacts.unshift(contact);
 
   await set(contacts);
@@ -29,7 +43,7 @@ export async function createContact() {
   return { contact };
 }
 
-export async function getContact(id) {
+export async function fetchContact(id) {
   await fakeNetwork(`contact:${id}`);
   let contacts = await localforage.getItem("contacts");
   let contact = contacts.find((contact) => contact.id === id);
@@ -37,7 +51,7 @@ export async function getContact(id) {
   return contact ?? null;
 }
 
-export async function updateContact(id, updates) {
+export async function patchContact(id, updates) {
   await fakeNetwork();
   let contacts = await localforage.getItem("contacts");
   let contact = contacts.find((contact) => contact.id === id);

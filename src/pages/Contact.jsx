@@ -6,7 +6,7 @@ export default function Contact() {
     firstName: "Teriz",
     lastName: "De Ocampo",
     avatar: "http://tinyurl.com/4ay3f7ka",
-    company: "Quasset", //twitter
+    company: "Quasset", // twitter
     email: "theresa@gmail.com", // notes
     favorite: false
   };
